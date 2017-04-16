@@ -1,4 +1,20 @@
-# keycloak-proxy-https
-Keycloak docker container with proxy https enabled.
+## configmap
+```sh
+oc create configmap sa --from-file=standalone.xml
+oc create configmap sha --from-file=standalone-ha.xml
+```
+```yaml
+      volumes:
+        - name: cv1
+          configMap:
+            name: sa
+            items:
+            - key: standalone.xml
+              path: standalone.xml
 
-See the [keycloak/server](https://github.com/jboss-dockerfiles/keycloak) image for more details on environment variables you can use.
+
+        volumeMounts:
+        - name: cv1
+          mountPath: /opt/jboss/keycloak/standalone/configuration
+          subPath: standalone.xml
+```          
