@@ -21,6 +21,6 @@ oc create configmap sha --from-file=standalone-ha.xml
 
         volumeMounts:
         - name: cv1
-          mountPath: /opt/jboss/keycloak/standalone/configuration
+          mountPath: /opt/jboss/keycloak/standalone/configuration/standalone.xml
           subPath: standalone.xml
 ```          
